@@ -1,7 +1,7 @@
 import telebot
 from hola import greetings
 from telebot import TeleBot
-
+import buttons
 
 TOKEN = '1851842646:AAEgF2SuLZm3iQzNBy-2Mv2M-ZEWuMoZVzs'
 
@@ -16,6 +16,9 @@ def echo_all(message):
 	for i in greetings:
 		if message.text == i:
 			bot.reply_to(message, 'Желаете записаться на прием?')
-			#bot.reply_to(message, message.text)
+	if message.text == 'Да':
+		bot.reply_to(message, 'Выберите удобное для Вас время')
+	elif message.text == 'Нет':
+		bot.reply_to(message, 'Чем могу помочь?')
 
 bot.polling()
